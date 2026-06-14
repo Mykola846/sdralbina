@@ -141,6 +141,9 @@
     const s = floor.story;
     if (!s) return "";
     const label = esc(s.buttonLabel || "Открыть историю");
+    const from = s.from
+      ? '<div class="congrats-from">Поздравление от ' + esc(s.from) + "</div>"
+      : "";
 
     function sec(part) {
       if (!part) return "";
@@ -172,6 +175,7 @@
       : "";
 
     return (
+      from +
       '<button class="btn btn-congrats" type="button" ' +
       'onclick="window.__revealCongrats(this)">' + label + "</button>" +
       '<div class="congrats story" hidden>' +
