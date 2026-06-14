@@ -92,6 +92,16 @@
     );
   }
 
+  function treatBlock(treat) {
+    if (!treat) return "";
+    return (
+      '<div class="treat">' +
+      '<div class="treat-title">💛 Тебе</div>' +
+      '<p class="treat-text">' + esc(treat).replace(/\n/g, "<br>") + "</p>" +
+      "</div>"
+    );
+  }
+
   function congratsBlock(floor) {
     const c = floor.congrats;
     if (!c) return "";
@@ -222,7 +232,7 @@
       '<span class="eyebrow">Квест начинается</span>' +
       "<h1>" + esc(w.headline) + "</h1>" +
       '<p class="lead">' + esc(w.message) + "</p>" +
-      hintBlock(w.hint) +
+      treatBlock(w.treat) +
       '<p class="foot-note">Найди первый код и отсканируй его</p>' +
       "</div>";
     setTitle("Старт");
@@ -246,7 +256,7 @@
       "</div>" +
       congratsBlock(floor) +
       storyBlock(floor) +
-      hintBlock(floor.hint) +
+      treatBlock(floor.treat) +
       (isLast
         ? '<a class="btn" href="#final">К сюрпризу</a>'
         : '<p class="foot-note">Найди следующий код и отсканируй его</p>') +

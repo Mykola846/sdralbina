@@ -186,6 +186,21 @@ h2 { font-size: clamp(24px, 7vw, 32px); margin-bottom: 8px; }
 }
 .gift .gift-name { font-size: 20px; font-weight: 800; color: var(--ink); }
 
+/* ---------- блок «приятность» ---------- */
+.treat {
+  margin-top: 22px;
+  background: linear-gradient(135deg, #ffe9f1, #fff3d9);
+  border-radius: 20px; padding: 16px 18px;
+  border: 2px solid #ffd9e6;
+}
+.treat .treat-title {
+  font-weight: 800; font-size: 13px; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--pink); margin-bottom: 8px;
+}
+.treat .treat-text {
+  font-size: 18px; font-weight: 700; line-height: 1.45; color: var(--ink);
+}
+
 /* ---------- блок подсказки ---------- */
 .hint {
   margin-top: 22px;
