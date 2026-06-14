@@ -85,7 +85,7 @@
     if (!media && !cap) return "";
     return (
       '<div class="hint">' +
-      '<div class="hint-title">🔎 Подсказка</div>' +
+      '<div class="hint-title">Подсказка</div>' +
       media +
       cap +
       "</div>"
@@ -93,18 +93,29 @@
   }
 
   function congratsBlock(floor) {
-    if (!floor.congrats) return "";
-    const media = mediaHtml(floor.congrats);
-    const cap = floor.congrats.caption
-      ? '<p class="caption">' + esc(floor.congrats.caption) + "</p>"
+    const c = floor.congrats;
+    if (!c) return "";
+    const media = mediaHtml(c);
+    const cap = c.caption
+      ? '<p class="caption">' + esc(c.caption) + "</p>"
       : "";
-    if (!media && !cap) return "";
-    const label = esc(QUEST.congratsButton || "🎉 Показать поздравление");
+    const poster = c.poster
+      ? '<div class="poster-wrap blurred" ' +
+        "onclick=\"this.classList.remove('blurred')\">" +
+        '<img class="congrats-poster" src="' + esc(c.poster) +
+        '" alt="" onerror="this.style.display=\'none\'" />' +
+        '<span class="poster-hint">Нажми, чтобы открыть</span>' +
+        "</div>"
+      : "";
+    if (!media && !cap && !poster) return "";
+    const label = esc(
+      c.revealLabel || QUEST.congratsButton || "Показать поздравление"
+    );
     return (
+      poster +
       '<button class="btn btn-congrats" type="button" ' +
       'onclick="window.__revealCongrats(this)">' + label + "</button>" +
       '<div class="congrats" hidden>' +
-      '<div class="congrats-title">💌 Поздравление</div>' +
       media +
       cap +
       "</div>"
@@ -125,14 +136,18 @@
   // ---------- экраны ----------
   function renderWelcome() {
     const w = QUEST.welcome;
+    const hero = w.photo
+      ? '<img class="hero-photo" src="' + esc(w.photo) +
+        '" alt="" onerror="this.style.display=\'none\'" />'
+      : "";
     app.innerHTML =
       '<div class="card">' +
-      '<span class="emoji-big">🎁</span>' +
+      hero +
       '<span class="eyebrow">Квест начинается</span>' +
       "<h1>" + esc(w.headline) + "</h1>" +
       '<p class="lead">' + esc(w.message) + "</p>" +
       hintBlock(w.hint) +
-      '<p class="foot-note">Найди первый QR-код и отсканируй его 📷</p>' +
+      '<p class="foot-note">Найди первый код и отсканируй его</p>' +
       "</div>";
     setTitle("Старт");
   }
@@ -147,18 +162,17 @@
     app.innerHTML =
       progressHtml(count) +
       '<div class="card">' +
-      '<span class="emoji-big">🎉</span>' +
       '<span class="eyebrow">' + esc(floor.floor) + " · уровень " + num + "</span>" +
-      "<h2>Ты нашёл мини-подарок!</h2>" +
+      "<h2>Подарок найден</h2>" +
       '<div class="gift">' +
-      '<div class="gift-title">🎁 Твой подарок</div>' +
+      '<div class="gift-title">Твой подарок</div>' +
       '<div class="gift-name">' + esc(floor.gift) + "</div>" +
       "</div>" +
       congratsBlock(floor) +
       hintBlock(floor.hint) +
       (isLast
-        ? '<a class="btn" href="#final">К сюрпризу 🎂</a>'
-        : '<p class="foot-note">Найди следующий QR-код и отсканируй его 📷</p>') +
+        ? '<a class="btn" href="#final">К сюрпризу</a>'
+        : '<p class="foot-note">Найди следующий код и отсканируй его</p>') +
       "</div>";
 
     setTitle(floor.floor);
