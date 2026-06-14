@@ -144,12 +144,30 @@
     box.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
+  // сквиш/слайм-эффект при тапе по фото
+  window.__squish = function (el) {
+    if (!el.animate) return;
+    el.animate(
+      [
+        { transform: "scale(1, 1)" },
+        { transform: "scale(1.28, 0.74)" },
+        { transform: "scale(0.78, 1.24)" },
+        { transform: "scale(1.14, 0.88)" },
+        { transform: "scale(0.93, 1.08)" },
+        { transform: "scale(1.03, 0.97)" },
+        { transform: "scale(1, 1)" },
+      ],
+      { duration: 700, easing: "ease-out" }
+    );
+  };
+
   // ---------- экраны ----------
   function renderWelcome() {
     const w = QUEST.welcome;
     const hero = w.photo
       ? '<img class="hero-photo" src="' + esc(w.photo) +
-        '" alt="" onerror="this.style.display=\'none\'" />'
+        '" alt="" onclick="window.__squish(this)" ' +
+        'onerror="this.style.display=\'none\'" />'
       : "";
     app.innerHTML =
       '<div class="card">' +
