@@ -56,7 +56,12 @@ const QUEST = {
     {
       floor: "2 этаж",
       gift: "Мини-подарок №2",
-      congrats: { type: "text", src: "", caption: "Текст поздравления для 2 этажа" },
+      congrats: {
+        type: "video",
+        src: "media/lera.mp4",
+        revealLabel: "Посмотреть видео",
+        caption: "",
+      },
       hint: { type: "image", src: "media/floor3.jpg", caption: "Следующий код — на 3 этаже. Ищи там, где..." },
     },
     {
