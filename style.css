@@ -158,6 +158,7 @@ h2 { font-size: clamp(24px, 7vw, 32px); margin-bottom: 8px; }
 
 .hero-photo {
   width: 130px; height: 130px; object-fit: cover;
+  object-position: 68% center; /* лицо смещено вправо на фото — центрируем его */
   border-radius: 50%; display: block; margin: 0 auto 16px;
   border: 4px solid #fff;
   box-shadow: 0 12px 28px rgba(155, 93, 229, 0.3);
