@@ -45,6 +45,7 @@ const QUEST = {
       floor: "1 этаж",
       gift: "Мини-подарок №1",
       congrats: {
+        from: "Ульяны", // от кого поздравление
         type: "video",
         src: "media/ulyana_albina.mp4", // видео, открывается по кнопке
         poster: "media/albina_ulyana.png", // картинка, видна сразу
@@ -57,6 +58,7 @@ const QUEST = {
       floor: "2 этаж",
       gift: "Мини-подарок №2",
       congrats: {
+        from: "Леры", // от кого поздравление
         type: "video",
         src: "media/lera.mp4",
         revealLabel: "Посмотреть видео",

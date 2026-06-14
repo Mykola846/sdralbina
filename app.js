@@ -111,7 +111,11 @@
     const label = esc(
       c.revealLabel || QUEST.congratsButton || "Показать поздравление"
     );
+    const from = c.from
+      ? '<div class="congrats-from">Поздравление от ' + esc(c.from) + "</div>"
+      : "";
     return (
+      from +
       poster +
       '<button class="btn btn-congrats" type="button" ' +
       'onclick="window.__revealCongrats(this)">' + label + "</button>" +

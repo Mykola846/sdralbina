@@ -245,6 +245,11 @@ h2 { font-size: clamp(24px, 7vw, 32px); margin-bottom: 8px; }
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
+.congrats-from {
+  margin-top: 22px; font-weight: 800; font-size: 17px;
+  color: var(--purple);
+}
+
 /* открытка в блюре, пока не нажмёшь */
 .poster-wrap {
   position: relative; margin-top: 20px; border-radius: 18px;
