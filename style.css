@@ -179,6 +179,40 @@ h2 { font-size: clamp(24px, 7vw, 32px); margin-bottom: 8px; }
 }
 .btn:active { transform: scale(0.96); box-shadow: 0 6px 14px rgba(255,94,126,0.4); }
 
+/* кнопка поздравления */
+.btn-congrats {
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--gold));
+  box-shadow: 0 10px 24px rgba(155, 93, 229, 0.4);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+/* блок поздравления */
+.congrats {
+  margin-top: 22px;
+  background: linear-gradient(135deg, #fff0f6, #f3e8ff);
+  border: 2px solid #f0d9ff;
+  border-radius: 20px; padding: 16px;
+}
+.congrats.show { animation: pop-in 0.5s cubic-bezier(0.18, 1.25, 0.4, 1) both; }
+.congrats-title {
+  font-weight: 800; font-size: 13px; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--pink); margin-bottom: 12px;
+}
+.congrats img, .congrats video, .congrats iframe {
+  width: 100%; max-height: 70vh; border-radius: 16px; display: block;
+  background: #eee; border: 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.congrats iframe { aspect-ratio: 16 / 9; height: auto; }
+.congrats .caption {
+  margin-top: 12px; font-size: 19px; font-weight: 800;
+  line-height: 1.4; color: var(--ink);
+}
+
 /* ---------- мелочи ---------- */
 .foot-note { margin-top: 16px; font-size: 14px; color: #9a8aa0; }
 

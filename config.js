@@ -2,19 +2,27 @@
 //  НАСТРОЙКА КВЕСТА — правь только этот файл и папку media/
 // ============================================================
 //
-//  Типы подсказок (hint.type):
+//  У каждого этажа два медиа-блока:
+//    hint     — ПОДСКАЗКА, где спрятан следующий код
+//    congrats — ПОЗДРАВЛЕНИЕ, открывается по кнопке после находки
+//
+//  Типы (type) для hint и congrats:
 //    "image" — фото или открытка:  src: "media/floor2.jpg"
-//    "video" — локальное видео:     src: "media/clip.mp4"
+//    "video" — локальное видео:     src: "media/v1.mp4"
 //              или ссылка YouTube:  src: "https://www.youtube.com/embed/КОД"
 //              или Google Drive:    src: "https://drive.google.com/file/d/ID/preview"
 //    "text"  — просто текст без медиа (src можно не указывать)
 //
-//  caption — подпись/подсказка текстом (можно оставить пустой "")
+//  caption — подпись текстом (можно оставить пустой "")
+//  Если у этажа НЕТ congrats — кнопка «Показать поздравление» не появится.
 // ============================================================
 
 const QUEST = {
   // Имя именинника (можно с эмодзи)
   name: "Именинник",
+
+  // Текст на кнопке, открывающей поздравление
+  congratsButton: "🎉 Показать поздравление",
 
   // --- Приветствие (открывается стартовым QR-кодом) ---
   welcome: {
@@ -30,14 +38,18 @@ const QUEST = {
     },
   },
 
-  // --- Этажи (уровни). Сейчас 6 штук. Можно добавлять/убирать. ---
+  // --- Этажи (уровни). Можно добавлять/убирать. ---
   // hint каждого этажа ведёт к коду СЛЕДУЮЩЕГО этажа.
-  // У последнего этажа hint ведёт к финалу — caption можно сделать
-  // интригующим, а src оставить пустым (type: "text").
+  // У последнего этажа hint.type: "text" — он автоматически станет финальным.
   floors: [
     {
       floor: "1 этаж",
       gift: "Мини-подарок №1 🎁",
+      congrats: {
+        type: "video",
+        src: "media/v1.mp4",
+        caption: "С днём рождения! 🥳",
+      },
       hint: {
         type: "image",
         src: "media/floor2.jpg",
@@ -47,6 +59,11 @@ const QUEST = {
     {
       floor: "2 этаж",
       gift: "Мини-подарок №2 🎁",
+      congrats: {
+        type: "video",
+        src: "media/v2.mp4",
+        caption: "С днём рождения! 🥳",
+      },
       hint: {
         type: "image",
         src: "media/floor3.jpg",
@@ -56,6 +73,11 @@ const QUEST = {
     {
       floor: "3 этаж",
       gift: "Мини-подарок №3 🎁",
+      congrats: {
+        type: "video",
+        src: "media/v3.mp4",
+        caption: "С днём рождения! 🥳",
+      },
       hint: {
         type: "image",
         src: "media/floor4.jpg",
@@ -65,6 +87,11 @@ const QUEST = {
     {
       floor: "4 этаж",
       gift: "Мини-подарок №4 🎁",
+      congrats: {
+        type: "video",
+        src: "media/v4.mp4",
+        caption: "С днём рождения! 🥳",
+      },
       hint: {
         type: "image",
         src: "media/floor5.jpg",
@@ -74,6 +101,11 @@ const QUEST = {
     {
       floor: "5 этаж",
       gift: "Мини-подарок №5 🎁",
+      congrats: {
+        type: "video",
+        src: "media/v5.mp4",
+        caption: "С днём рождения! 🥳",
+      },
       hint: {
         type: "image",
         src: "media/floor6.jpg",
@@ -83,6 +115,11 @@ const QUEST = {
     {
       floor: "6 этаж",
       gift: "Мини-подарок №6 🎁",
+      congrats: {
+        type: "text",
+        src: "",
+        caption: "Здесь будет поздравление для 6 этажа 💌",
+      },
       hint: {
         type: "image",
         src: "media/floor7.jpg",
@@ -92,6 +129,11 @@ const QUEST = {
     {
       floor: "7 этаж",
       gift: "Мини-подарок №7 🎁",
+      congrats: {
+        type: "text",
+        src: "",
+        caption: "Здесь будет поздравление для 7 этажа 💌",
+      },
       hint: {
         type: "image",
         src: "media/floor8.jpg",
@@ -101,6 +143,11 @@ const QUEST = {
     {
       floor: "8 этаж",
       gift: "Мини-подарок №8 🎁",
+      congrats: {
+        type: "text",
+        src: "",
+        caption: "Здесь будет поздравление для 8 этажа 💌",
+      },
       hint: {
         type: "image",
         src: "media/floor9.jpg",
@@ -110,6 +157,11 @@ const QUEST = {
     {
       floor: "9 этаж",
       gift: "Мини-подарок №9 🎁",
+      congrats: {
+        type: "text",
+        src: "",
+        caption: "Здесь будет поздравление для 9 этажа 💌",
+      },
       hint: {
         type: "image",
         src: "media/floor10.jpg",
@@ -119,6 +171,11 @@ const QUEST = {
     {
       floor: "10 этаж",
       gift: "Мини-подарок №10 🎁",
+      congrats: {
+        type: "text",
+        src: "",
+        caption: "Здесь будет поздравление для 10 этажа 💌",
+      },
       hint: {
         type: "text",
         src: "",

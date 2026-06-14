@@ -58,17 +58,9 @@
 <body>
   <div class="head">
     <h1>QR-коды квеста 🎉</h1>
-    <p>Адрес сайта определён автоматически:</p>
-    <div class="base" id="base">…</div>
     <p>Распечатай эту страницу, вырежи коды и спрячь по этажам.<br>
        «Старт» отдай имениннику или повесь на дверь.</p>
     <button class="btn" onclick="window.print()">🖨 Печать</button>
-  </div>
-
-  <div class="warn" id="warn">
-    ⚠️ Похоже, страница открыта локально (file://). QR-коды будут указывать на
-    локальный путь и не откроются с телефона. Сначала залей сайт на GitHub Pages,
-    потом открой <b>qr.html на живом адресе</b> и распечатай отсюда.
   </div>
 
   <div class="grid" id="grid"></div>
@@ -80,11 +72,6 @@
       // базовый адрес = текущий URL без qr.html, ?, #
       var base = location.href.split("#")[0].split("?")[0].replace(/qr\.html$/i, "");
       if (!/\/$/.test(base)) base += "/";
-      document.getElementById("base").textContent = base;
-
-      if (location.protocol === "file:") {
-        document.getElementById("warn").style.display = "block";
-      }
 
       var items = [{ label: "Старт", sub: "отдать имениннику", url: base }];
       QUEST.floors.forEach(function (f, i) {

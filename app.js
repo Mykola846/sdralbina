@@ -92,6 +92,36 @@
     );
   }
 
+  function congratsBlock(floor) {
+    if (!floor.congrats) return "";
+    const media = mediaHtml(floor.congrats);
+    const cap = floor.congrats.caption
+      ? '<p class="caption">' + esc(floor.congrats.caption) + "</p>"
+      : "";
+    if (!media && !cap) return "";
+    const label = esc(QUEST.congratsButton || "🎉 Показать поздравление");
+    return (
+      '<button class="btn btn-congrats" type="button" ' +
+      'onclick="window.__revealCongrats(this)">' + label + "</button>" +
+      '<div class="congrats" hidden>' +
+      '<div class="congrats-title">💌 Поздравление</div>' +
+      media +
+      cap +
+      "</div>"
+    );
+  }
+
+  // открыть поздравление по кнопке
+  window.__revealCongrats = function (btn) {
+    const box = btn.nextElementSibling;
+    if (!box) return;
+    box.hidden = false;
+    box.classList.add("show");
+    btn.style.display = "none";
+    launchConfetti();
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   // ---------- экраны ----------
   function renderWelcome() {
     const w = QUEST.welcome;
@@ -124,6 +154,7 @@
       '<div class="gift-title">🎁 Твой подарок</div>' +
       '<div class="gift-name">' + esc(floor.gift) + "</div>" +
       "</div>" +
+      congratsBlock(floor) +
       hintBlock(floor.hint) +
       (isLast
         ? '<a class="btn" href="#final">К сюрпризу 🎂</a>'
