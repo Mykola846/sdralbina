@@ -191,14 +191,20 @@
     box.classList.add("show");
     btn.style.display = "none";
     launchConfetti();
-    const v = box.querySelector("video");
-    if (v) {
-      try {
-        const p = v.play();
-        if (p && p.catch) p.catch(function () {});
-      } catch (e) {}
+    const isStory = box.classList.contains("story");
+    if (isStory) {
+      // история: ничего не автоплеим и не прыгаем к видео — пусть читает с начала
+      box.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      const v = box.querySelector("video");
+      if (v) {
+        try {
+          const p = v.play();
+          if (p && p.catch) p.catch(function () {});
+        } catch (e) {}
+      }
+      box.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-    box.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   // сквиш/слайм-эффект при тапе по фото
