@@ -159,7 +159,7 @@
       panels +=
         '<div class="panel">' +
         '<div class="panel-photo" style="background-image:url(\'' +
-        esc(p.photo) + "?s=2" +
+        esc(p.photo) + "?s=3" +
         "')\">" +
         '<span class="panel-badge">' + (i + 1) + "</span>" +
         "</div>" +
