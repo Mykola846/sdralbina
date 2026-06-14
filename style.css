@@ -186,6 +186,14 @@ h2 { font-size: clamp(24px, 7vw, 32px); margin-bottom: 8px; }
 }
 .gift .gift-name { font-size: 20px; font-weight: 800; color: var(--ink); }
 
+/* ---------- медиа на финале (без пустой рамки) ---------- */
+.final-media { margin-top: 20px; }
+.final-media img, .final-media video {
+  width: 100%; max-height: 70vh; border-radius: 18px; display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.final-media video { width: auto; max-width: 100%; margin: 0 auto; }
+
 /* ---------- блок «приятность» ---------- */
 .treat {
   margin-top: 22px;

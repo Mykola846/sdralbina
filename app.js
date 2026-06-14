@@ -273,13 +273,13 @@
     for (let i = 1; i <= total; i++) markFound(i);
     const media = mediaHtml(f.media);
     app.innerHTML =
-      progressHtml(getFound().size) +
+      progressHtml(total) +
       '<div class="card">' +
       '<span class="emoji-big">🎂</span>' +
       '<span class="eyebrow">Финал</span>' +
       "<h1>" + esc(f.headline) + "</h1>" +
-      '<p class="lead">' + esc(f.message) + "</p>" +
-      (media ? '<div class="hint">' + media + "</div>" : "") +
+      '<p class="lead">' + esc(f.message).replace(/\n/g, "<br>") + "</p>" +
+      (media ? '<div class="final-media">' + media + "</div>" : "") +
       "</div>";
     setTitle("Поздравляю!");
     animateProgress(total);
