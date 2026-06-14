@@ -130,6 +130,13 @@
     box.classList.add("show");
     btn.style.display = "none";
     launchConfetti();
+    const v = box.querySelector("video");
+    if (v) {
+      try {
+        const p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      } catch (e) {}
+    }
     box.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
