@@ -97,7 +97,7 @@
     if (!c) return "";
     const media = mediaHtml(c);
     const cap = c.caption
-      ? '<p class="caption">' + esc(c.caption) + "</p>"
+      ? '<p class="caption">' + esc(c.caption).replace(/\n/g, "<br>") + "</p>"
       : "";
     const poster = c.poster
       ? '<div class="poster-wrap blurred" ' +

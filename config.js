@@ -58,9 +58,9 @@ const QUEST = {
       floor: "2 этаж",
       gift: "Мини-подарок №2",
       congrats: {
-        from: "Леры", // от кого поздравление
+        from: "Влада", // от кого поздравление
         type: "video",
-        src: "media/lera.mp4",
+        src: "media/vlad.mp4",
         revealLabel: "Посмотреть видео",
         caption: "",
       },
@@ -73,6 +73,7 @@ const QUEST = {
         from: "Насти",
         type: "video",
         src: "media/nastya.mp4",
+        poster: "media/nastya_photo.jpg", // фото-открытка с блюром перед видео
         revealLabel: "Посмотреть видео",
         caption: "",
       },
@@ -81,7 +82,17 @@ const QUEST = {
     {
       floor: "4 этаж",
       gift: "Мини-подарок №4",
-      congrats: { type: "text", src: "", caption: "Текст поздравления для 4 этажа" },
+      congrats: {
+        from: "Леры",
+        type: "text",
+        src: "",
+        revealLabel: "Открыть поздравление",
+        caption:
+          "Альбина с Днём рождения!!!\n" +
+          "🎂🎂🎂🎂🎂🎂🎂🎂🎂🎂🎂\n" +
+          "желаю рости очень умной и мудрой, будь воительницей победительницей волчицей, пусть исполняются все самые заветные желания и пусть каждый день приносит только улыбаки!\n" +
+          "с праздником!!!!",
+      },
       hint: { type: "image", src: "media/floor5.jpg", caption: "Следующий код — на 5 этаже. Ищи там, где..." },
     },
     {
