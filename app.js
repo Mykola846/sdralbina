@@ -126,6 +126,53 @@
     );
   }
 
+  // особый блок «история» (комикс-лента) для этажа со story
+  function storyBlock(floor) {
+    const s = floor.story;
+    if (!s) return "";
+    const label = esc(s.buttonLabel || "Открыть историю");
+
+    function sec(part) {
+      if (!part) return "";
+      const t = part.text
+        ? '<p class="story-text">' +
+          esc(part.text).replace(/\n/g, "<br>") +
+          "</p>"
+        : "";
+      const v = part.video ? mediaHtml({ type: "video", src: part.video }) : "";
+      if (!t && !v) return "";
+      return '<div class="story-sec">' + t + v + "</div>";
+    }
+
+    let panels = "";
+    (s.panels || []).forEach(function (p, i) {
+      panels +=
+        '<div class="panel">' +
+        '<div class="panel-photo" style="background-image:url(\'' +
+        esc(p.photo) +
+        "')\">" +
+        '<span class="panel-badge">' + (i + 1) + "</span>" +
+        "</div>" +
+        '<div class="panel-cap">' + esc(p.text) + "</div>" +
+        "</div>";
+    });
+    const slider = panels
+      ? '<div class="slider">' + panels + "</div>" +
+        '<div class="slider-hint">← листай →</div>'
+      : "";
+
+    return (
+      '<button class="btn btn-congrats" type="button" ' +
+      'onclick="window.__revealCongrats(this)">' + label + "</button>" +
+      '<div class="congrats story" hidden>' +
+      sec(s.intro) +
+      slider +
+      sec(s.outro) +
+      (s.love ? sec(s.love) : "") +
+      "</div>"
+    );
+  }
+
   // открыть поздравление по кнопке
   window.__revealCongrats = function (btn) {
     const box = btn.nextElementSibling;
@@ -185,7 +232,7 @@
     const floor = QUEST.floors[idx];
     const num = idx + 1;
     const wasNew = markFound(num);
-    const count = getFound().size;
+    const count = num; // прогресс = номер этажа (на 1 этаже «1 из N», на 2 «2 из N» ...)
     const isLast = num === total;
 
     app.innerHTML =
@@ -198,6 +245,7 @@
       '<div class="gift-name">' + esc(floor.gift) + "</div>" +
       "</div>" +
       congratsBlock(floor) +
+      storyBlock(floor) +
       hintBlock(floor.hint) +
       (isLast
         ? '<a class="btn" href="#final">К сюрпризу</a>'
