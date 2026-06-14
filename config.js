@@ -94,7 +94,13 @@ const QUEST = {
     {
       floor: "5 этаж",
       gift: "Мини-подарок №5",
-      congrats: { type: "text", src: "", caption: "Текст поздравления для 5 этажа" },
+      congrats: {
+        from: "Юли",
+        type: "video",
+        src: "media/yulia.mp4",
+        revealLabel: "Посмотреть видео",
+        caption: "",
+      },
       treat: "Рядом с тобой тепло и спокойно",
     },
     {
