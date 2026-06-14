@@ -96,7 +96,7 @@
     if (!treat) return "";
     return (
       '<div class="treat">' +
-      '<div class="treat-title">💛 Тебе</div>' +
+      '<div class="treat-title">Тебе</div>' +
       '<p class="treat-text">' + esc(treat).replace(/\n/g, "<br>") + "</p>" +
       "</div>"
     );
