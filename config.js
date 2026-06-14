@@ -73,7 +73,6 @@ const QUEST = {
         from: "Насти",
         type: "video",
         src: "media/nastya.mp4",
-        poster: "media/nastya_photo.jpg", // фото-открытка с блюром перед видео
         revealLabel: "Посмотреть видео",
         caption: "",
       },
@@ -84,8 +83,8 @@ const QUEST = {
       gift: "Мини-подарок №4",
       congrats: {
         from: "Леры",
-        type: "text",
-        src: "",
+        type: "image",
+        src: "media/lera_photo.jpg",
         revealLabel: "Открыть поздравление",
         caption:
           "Альбина с Днём рождения!!!\n" +
